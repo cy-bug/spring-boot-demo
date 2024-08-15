@@ -17,22 +17,24 @@ RUN chmod +x ./mvnw
 
 # 配置 Maven 使用国内镜像和仓库源
 RUN mkdir -p /root/.m2 && \
-    echo '<settings>' \
-    '<mirrors>' \
-    '<mirror>' \
-        '<id>nexus-aliyun</id>' \
-        '<mirrorOf>central</mirrorOf>' \
-        '<name>Nexus aliyun</name \
-        '<url>http://maven.aliyun.com/nexus/content/groups/public</ur1>' \
-    '</mirror>' \
-    '<mirror>' \
-    '<id>nexus-huawei</id>' \
-    '<mirrorOf>central</mirrorOf>' \
-    '<name>Nexus huawei</name>' \
-    '<url>https://repo.huaweicloud.com/repository/maven/</url>' \
-    '</mirror>' \
-    '</mirrors>' \
-    '</settings>' > /root/.m2/settings.xml
+    printf '<settings>\n' \
+    '<mirrors>\n' \
+    '<mirror>\n' \
+        '<id>nexus-aliyun</id>\n' \
+        '<mirrorOf>central</mirrorOf>\n' \
+        '<name>Nexus aliyun</name>\n' \
+        '<url>http://maven.aliyun.com/nexus/content/groups/public</url>\n' \
+    '</mirror>\n' \
+    '<mirror>\n' \
+        '<id>nexus-huawei</id>\n' \
+        '<mirrorOf>central</mirrorOf>\n' \
+        '<name>Nexus huawei</name>\n' \
+        '<url>https://repo.huaweicloud.com/repository/maven/</url>\n' \
+    '</mirror>\n' \
+    '</mirrors>\n' \
+    '</settings>\n' > /root/.m2/settings.xml
+
+
 
 # 执行 Maven 构建
 RUN rm -rf /root/.m2/repository/*

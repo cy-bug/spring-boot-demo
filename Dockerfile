@@ -9,11 +9,10 @@ COPY .mvn/ .mvn/
 COPY src ./src
 COPY pom.xml .
 COPY mvnw .
-COPY mvnw.cmd .
 
 
 # 确保 Maven Wrapper 文件具有执行权限
-RUN chmod +x mvnw
+RUN chmod +x ./mvnw
 
 # 配置 Maven 使用国内镜像和仓库源
 RUN mkdir -p /root/.m2 && \
@@ -41,7 +40,7 @@ RUN mkdir -p /root/.m2 && \
     '</settings>' > /root/.m2/settings.xml
 
 # 执行 Maven 构建
-RUN ./mvnw clean package
+RUN ./mvnw clean package -X
 
 # 使用一个更小的基础镜像作为运行环境
 FROM openjdk:17-slim

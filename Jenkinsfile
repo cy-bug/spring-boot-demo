@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') { // git拉取代码
 	  steps {
-	    git branch: 'main', url: 'https://gitee.com/dy5/spring-boot-demo.git'
+	    git branch: 'master', url: 'https://gitee.com/dy5/spring-boot-demo.git'
 	  }
 	}
 	//stage('Build') {  // 编译、打包项目

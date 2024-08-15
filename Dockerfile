@@ -19,27 +19,22 @@ RUN mkdir -p /root/.m2 && \
     echo '<settings>' \
     '<mirrors>' \
     '<mirror>' \
-    '<id>nexus-aliyun</id>' \
-    '<mirrorOf>central</mirrorOf>' \
-    '<name>Nexus aliyun</name>' \
-    '<url>https://maven.aliyun.com/repository/central/</url>' \
+        '<id>nexus-aliyun</id>' \
+        '<mirrorOf>central</mirrorOf>' \
+        '<name>Nexus aliyun</name \
+        '<url>http://maven.aliyun.com/nexus/content/groups/public</ur1>' \
     '</mirror>' \
     '<mirror>' \
     '<id>nexus-huawei</id>' \
     '<mirrorOf>central</mirrorOf>' \
     '<name>Nexus huawei</name>' \
-    '<url>https://mirrors.huaweicloud.com/repository/maven/</url>' \
-    '</mirror>' \
-    '<mirror>' \
-    '<id>nexus-163</id>' \
-    '<mirrorOf>central</mirrorOf>' \
-    '<name>Nexus wangyi</name>' \
-    '<url>http://mirrors.163.com/maven/repository/maven-public/</url>' \
+    '<url>https://repo.huaweicloud.com/repository/maven/</url>' \
     '</mirror>' \
     '</mirrors>' \
     '</settings>' > /root/.m2/settings.xml
 
 # 执行 Maven 构建
+ENV MAVEN_CONFIG=""
 RUN ./mvnw clean package -X
 
 # 使用一个更小的基础镜像作为运行环境

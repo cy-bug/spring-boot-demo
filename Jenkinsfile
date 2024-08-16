@@ -1,5 +1,8 @@
 pipeline {
   agent {label '10-node'}
+  tools {
+    maven 'Maven 3.9.8' // 确保这个名字与 Jenkins 配置的 Maven 名字一致
+  }
   stages {
     stage('Checkout') { // git拉取代码
 	  steps {

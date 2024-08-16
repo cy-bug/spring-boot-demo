@@ -7,7 +7,7 @@ pipeline {
 	  }
 	}
 	stage('Build') {  // 编译、打包项目
-	  steps { // 因为Dockerfile文件有mvn构建步骤，此步可有可不有，若有后续可以直接将jar包复制进镜像直接运行
+	  steps { // 如果Dockerfile文件有mvn构建步骤，此步可有可不有，若有后续可以直接将jar包复制进镜像直接运行
 	    sh 'mvn clean package'  // 清理旧的构建文件，并重新打包项目
 	  }
 	}

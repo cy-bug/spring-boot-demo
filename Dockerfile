@@ -5,7 +5,7 @@ FROM openjdk:17-slim
 WORKDIR /app
 
 # 从复制 JAR 文件到当前目录
-COPY /var/jenkins_home/workspace/spring-boot-demo/target/*.jar app.jar
+COPY target/*.jar app.jar
 
 # 根据服务设置暴露应用运行所需的端口
 EXPOSE 8080
